@@ -45,66 +45,23 @@ namespace CalculadoraApp2._0
 
                 double primeiroNumero = 0, segundoNumero = 0;
 
-
-
                 Console.WriteLine("Digite o primiero numero número: ");
 
                 primeiroNumero = Convert.ToDouble(Console.ReadLine());
 
                 if (opcao == "4")
                 {
-                    int contador = 0;
-                    do
-                    {
-                        if (contador >= 1)
-                        {
-                            Console.WriteLine("Número zero não é possivel, tente novamente.");
-                        }
-                        Console.WriteLine("Digite o segundo número: ");
-                        segundoNumero = Convert.ToDouble(Console.ReadLine());
-
-                        Console.Clear();
-                        contador++;
-
-                    }
-                    while (segundoNumero == 0);
+                    segundoNumero = verficaDivisor0(segundoNumero);
                 }
                 else
                 {
                     Console.WriteLine("Digite o segundo número: ");
                     segundoNumero = Convert.ToDouble(Console.ReadLine());
                 }
-               
-
-
-
-                double resultado = 0;
 
                 string simboloOperacao = geraSimbolo(opcao);
 
-                //switch (opcao)
-                //{
-                //case "1": 
-                //resultado = primeiroNumero + segundoNumero;
-                //simboloOperacao = "+"; 
-                //  break;
-                //case "2": resultado = primeiroNumero - segundoNumero;
-                //simboloOperacao = "-";
-                //  break;
-                //case "3": 
-                //   resultado = primeiroNumero * segundoNumero;
-                //    simboloOperacao = "*";
-                //    break;
-                //case "4": 
-                //    resultado = primeiroNumero / segundoNumero;
-                //      simboloOperacao = "/";
-                //    break;
-
-                //  default: break;
-
-                //}
-
-                resultado = realizaOperacoes(opcao, primeiroNumero, segundoNumero);
+                double resultado = realizaOperacoes(opcao, primeiroNumero, segundoNumero);
 
                 Console.WriteLine("Resultado: " + resultado);
 
@@ -162,7 +119,6 @@ namespace CalculadoraApp2._0
         }
 
         public static double realizaOperacoes(string op, double primeiroNumero, double segundoNumero)
-
         {
             double resultado = 0;
             switch (op)
@@ -204,6 +160,27 @@ namespace CalculadoraApp2._0
 
 
             return simbolo;
+        }
+
+        public static double verficaDivisor0(double segundoNumero)
+        {
+            int contador = 0;
+            do
+            {
+                if (contador >= 1)
+                {
+                    Console.WriteLine("Número zero não é possivel, tente novamente.");
+                }
+                Console.WriteLine("Digite o segundo número: ");
+                segundoNumero = Convert.ToDouble(Console.ReadLine());
+
+                Console.Clear();
+                contador++;
+
+            }
+            while (segundoNumero == 0);
+
+            return segundoNumero;
         }
             
 
